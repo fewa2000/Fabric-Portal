@@ -4,6 +4,7 @@ A simple Streamlit app demonstrating future Microsoft Fabric integration.
 """
 
 import streamlit as st
+import pandas as pd
 import time
 import random
 
@@ -150,11 +151,11 @@ def main():
     # --- Charts ---
     st.subheader("Weekly Trend")
 
-    chart_data = {
+    chart_df = pd.DataFrame({
         "Day": data["chart_labels"],
         "Value": data["chart_data"]
-    }
-    st.bar_chart(chart_data, x="Day", y="Value")
+    })
+    st.bar_chart(chart_df, x="Value", y="Day", horizontal=True)
 
     st.divider()
 
